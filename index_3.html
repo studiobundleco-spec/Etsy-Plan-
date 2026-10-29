@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BDL Tech Pack Plan</title>
+<meta name="description" content="Bündle.co 12-week plan: one tech pack a week, four Etsy listings each.">
+<style>
+/* Layout: drafting sheet. Today card first, then Week, Block and Plan zoom levels. Brand: Studio Black, Carbon, Off White, Grid Grey, Drafting. */
+:root{
+  --bg:#F5F5F3;--sheet:#FFFFFF;--ink:#0A0A0A;--carbon:#2A2A2A;--grey:#6E6E6A;--rule:#DCD8CF;--drafting:#E8E4DC;--grid:rgba(10,10,10,.05);
+  --ok:#3D6B4F;--ok-bg:#E3EDE6;
+  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0A0A0A;--sheet:#151515;--ink:#F5F5F3;--carbon:#D9D7D0;--grey:#9A9A95;--rule:#2E2E2C;--drafting:#22211F;--grid:rgba(245,245,243,.05);
+  --ok:#8CC4A0;--ok-bg:#1B2A20;color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-right,0px)) 72px max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:24px}
+header{display:flex;flex-direction:column;gap:10px;padding:22px;border:1px solid var(--rule);background:var(--sheet);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:16px 16px}
+.eyebrow,.code,.label,.pill,.meta{font-family:var(--mono)}
+.eyebrow{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+h1{margin:0;font-size:30px;line-height:1.1;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+h2{margin:0;font-size:20px;font-weight:700;text-wrap:balance}
+h3{margin:0;font-size:15px;font-weight:700}
+.sub{margin:0;color:var(--carbon);max-width:64ch}
+.bar{height:6px;background:var(--drafting);position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--ink);transition:width .3s}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:var(--grey)}
+nav{display:flex;border:1px solid var(--rule);background:var(--sheet);overflow-x:auto}
+nav button{flex:1 0 auto;font:inherit;font-weight:700;font-size:13.5px;padding:11px 14px;border:0;border-right:1px solid var(--rule);background:transparent;color:var(--grey);cursor:pointer}
+nav button:last-child{border-right:0}
+nav button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.card{background:var(--sheet);border:1px solid var(--rule);padding:22px;display:flex;flex-direction:column;gap:16px}
+.code{font-size:12px;color:var(--grey);letter-spacing:.04em}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-bottom:4px}
+ol.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.donewhen{border-left:3px solid var(--ink);padding:8px 12px;background:var(--drafting)}
+.extra{border:1px dashed var(--rule);padding:8px 12px;font-size:14px;color:var(--carbon)}
+.btn{font:inherit;font-weight:700;font-size:14px;padding:10px 18px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.pill{font-size:11px;padding:2px 8px;border:1px solid var(--rule);color:var(--grey);white-space:nowrap}
+.pill.ok{background:var(--ok-bg);color:var(--ok);border-color:transparent}
+.pill.now{background:var(--ink);color:var(--bg);border-color:transparent}
+.list{display:flex;flex-direction:column;border:1px solid var(--rule);background:var(--sheet)}
+.item{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 14px;border:0;border-bottom:1px solid var(--rule);cursor:pointer;text-align:left;font:inherit;color:inherit;background:transparent;width:100%}
+.item:last-child{border-bottom:0}
+.item:hover{background:var(--drafting)}
+.item .t{min-width:0}
+.item .t b{display:block;font-size:14.5px}
+.item .t small{display:block;color:var(--grey);font-size:12.5px;overflow-wrap:anywhere}
+.tick{width:20px;height:20px;border:1.5px solid var(--grey);display:grid;place-items:center;font-size:12px;color:var(--bg)}
+.tick.on{background:var(--ink);border-color:var(--ink)}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.spec>div{padding:12px 14px;background:var(--sheet);min-width:0}
+@media (max-width:600px){.spec{grid-template-columns:1fr}}
+.spec p{margin:0;font-size:14px;color:var(--carbon)}
+.tbl{overflow-x:auto;border:1px solid var(--rule);background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);font-weight:400}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.blk{background:var(--sheet);border:1px solid var(--rule);padding:18px;display:flex;flex-direction:column;gap:10px;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.blk:hover{border-color:var(--ink)}
+.blk p{margin:0;color:var(--carbon);font-size:14px}
+.mini{height:4px;background:var(--drafting);position:relative}
+.mini i{position:absolute;inset:0 auto 0 0;background:var(--ink)}
+.stack{display:flex;flex-direction:column;gap:14px}
+.wkhead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+.note{font-size:13.5px;color:var(--carbon);background:var(--drafting);padding:12px 14px}
+.why{font-size:14px;color:var(--carbon);margin:0}
+footer{font-size:12px;color:var(--grey);display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between}
+footer button{font:inherit;font-size:12px;background:none;border:0;color:var(--grey);text-decoration:underline;cursor:pointer;padding:0}
+@media (max-width:520px){h1{font-size:25px}.card,header{padding:16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Bündle.co · Etsy build plan · Fri 30 Oct 2026 to Thu 21 Jan 2027</div>
+    <h1>One tech pack a week, four listings each</h1>
+    <p class="sub">12 garments, 48 listings. Every day has one task with what to do, how to do it, and when it counts as done. Finish it and the next one opens.</p>
+    <div class="bar" aria-hidden="true"><i id="bar" style="width:0%"></i></div>
+    <div class="meta"><span id="count">0 / 84 tasks</span><span id="listed">0 / 45 listings live by 21 Jan</span><span>Weeks run Friday to Thursday</span></div>
+  </header>
+  <nav role="tablist" aria-label="Zoom level">
+    <button role="tab" data-v="today" aria-selected="true">Today</button>
+    <button role="tab" data-v="week" aria-selected="false">Week</button>
+    <button role="tab" data-v="block" aria-selected="false">Block</button>
+    <button role="tab" data-v="plan" aria-selected="false">Plan</button>
+    <button role="tab" data-v="rules" aria-selected="false">Rules</button>
+  </nav>
+  <main id="view"></main>
+  <footer><span>Progress is saved in this browser.</span><button id="reset" type="button">Reset progress</button></footer>
+</div>
+
+<script>
+const START = new Date(2026, 9, 30); // Fri 30 Oct 2026
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const DAY = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+// Garments, in build order. Prices in USD: full, Canva, mini, flat.
+const G = [
+ {code:"PFJ-001",name:"Puffer jacket",base:"BSH-001 hoodie",price:[28,28,12,8],
+  why:"Fleece and puffer searches peak in November. No full puffer tech pack sits on Etsy page one, only vectors at USD 2.78 to 7.80.",
+  fabric:"Shell 20D nylon ripstop with DWR finish. Wadding 100% polyester, 160 g/m² body, 120 g/m² sleeves. Lining 20D nylon taffeta.",
+  trims:"#5 two-way front zip with chin guard, zip hand pockets, elastic-bound cuffs, hem drawcord with 2 toggles, main and care labels.",
+  focus:"quilt channel width and stitch, wadding weight by zone, hood attachment, down-proof seam finish",
+  poms:"channel width, hood height, hood opening, centre back length, sleeve length from CB, hem width relaxed and extended",
+  kw:["puffer jacket tech pack","canva puffer jacket tech pack","puffer jacket spec sheet","puffer jacket flat sketch"]},
+ {code:"FQZ-001",name:"Fleece quarter-zip",base:"CSW-001 crewneck",price:[24,24,12,8],
+  why:"Men's quarter-zip fleece patterns carry 2,000 to 32,400 shop reviews. Quarter-zips are a key FW26-27 runway item.",
+  fabric:"Anti-pill polar fleece, 100% polyester, 280 to 300 g/m². Optional second colourway in 320 g/m² sherpa.",
+  trims:"#5 coil quarter zip 20 cm with zip garage, lycra binding at cuffs and hem, woven neck label.",
+  focus:"stand collar construction, zip placket, flatlock seams, binding finish",
+  poms:"collar height, zip length, placket width, cuff binding width, hem binding width",
+  kw:["quarter zip tech pack","canva quarter zip tech pack","fleece pullover spec sheet","quarter zip flat sketch"]},
+ {code:"QLJ-001",name:"Quilted liner jacket",base:"PFJ-001 puffer",price:[28,28,12,8],
+  why:"Quilted jacket searches run at 9,900 a month from September to November. The top quilted pattern shop shows 31,800 reviews.",
+  fabric:"Shell 40D nylon, wadding 80 g/m² polyester, lining 40D nylon. Diamond quilt at 6 cm.",
+  trims:"5 snap front, bias binding tape on all edges, 2 welt pockets, hanger loop.",
+  focus:"diamond quilt spacing and direction, bias binding on edges, collarless V or round neckline",
+  poms:"quilt diamond size, binding width, snap spacing, front length, centre back length",
+  kw:["quilted jacket tech pack","canva quilted jacket tech pack","liner jacket spec sheet","quilted jacket flat sketch"]},
+ {code:"SWP-001",name:"Wide-leg sweatpants",base:"BSH-001 hoodie fleece",price:[24,24,12,8],
+  why:"Sweatpants get 1,300 searches against 1,338 listings. They complete the hoodie and crewneck sweatsuit bundles.",
+  fabric:"Brushed-back fleece 380 to 420 g/m², 80% cotton 20% polyester, matched to CSW-001 and BSH-001.",
+  trims:"4 cm covered elastic waist, flat drawcord with metal tips, 2 eyelets, side seam pockets.",
+  focus:"front and back rise, wide straight leg, side seam pocket bag, open hem",
+  poms:"waist relaxed and stretched, front rise, back rise, thigh, knee, leg opening, inseam",
+  kw:["sweatpants tech pack","canva sweatpants tech pack","joggers spec sheet","sweatpants flat sketch"]},
+ {code:"PFV-001",name:"Puffer vest",base:"PFJ-001 puffer",price:[24,24,12,8],
+  why:"Quilted vest searches hold at 1,900 a month from November to January. It reuses the PFJ-001 block, so it is a fast week.",
+  fabric:"Same as PFJ-001: 20D ripstop shell, 160 g/m² wadding, 20D taffeta lining.",
+  trims:"#5 front zip with chin guard, elastic binding at armholes, zip hand pockets.",
+  focus:"armhole binding, channel alignment with the jacket, stand collar",
+  poms:"armhole depth, armhole binding width, collar height, channel width",
+  kw:["puffer vest tech pack","canva puffer vest tech pack","gilet spec sheet","puffer vest flat sketch"]},
+ {code:"BAL-001",name:"Balaclava",base:"FQZ-001 fleece",price:[18,18,9,6],
+  why:"Balaclava searches hold at 3,600 a month from November to January. Page-one listings show no reviews.",
+  fabric:"Polar fleece 300 g/m², or 1x1 rib knit 280 g/m² as a second colourway.",
+  trims:"Flatlock seams, woven label at the back neck. Optional drawcord at the face opening.",
+  focus:"face opening shape, crown seam, neck length. Grade in 3 sizes: S/M, L/XL, kids",
+  poms:"head circumference, face opening width, face opening height, crown to neck length, neck flare",
+  kw:["balaclava tech pack","canva balaclava tech pack","ski mask spec sheet","balaclava flat sketch"]},
+ {code:"CRG-001",name:"Cargo pants",base:"SWP-001 sweatpants",price:[24,24,12,8],
+  why:"Cargo gets 1,000 searches against 1,156 listings. Pinterest's \"Khaki coded\" trend backs utility.",
+  fabric:"Cotton ripstop or twill, 260 to 300 g/m².",
+  trims:"#4.5 metal fly zip, shank button, bellows cargo pockets with flaps and snaps, hem toggles.",
+  focus:"bellows pocket construction, bartacks, knee darts, hem adjuster",
+  poms:"waist, front rise, back rise, thigh, knee, leg opening, inseam, cargo pocket placement",
+  kw:["cargo pants tech pack","canva cargo pants tech pack","cargo trousers spec sheet","cargo pants flat sketch"]},
+ {code:"TRK-001",name:"Track jacket",base:"FQZ-001 fleece",price:[24,24,12,8],
+  why:"Tracksuit tech packs fill streetwear page one. It is the spring transition piece and pairs with SWP-001.",
+  fabric:"Polyester tricot, 230 to 260 g/m², with contrast side tape.",
+  trims:"#5 coil full zip, rib cuffs and hem, stand collar, zip pockets.",
+  focus:"raglan sleeve, side tape placement, colour-block panels",
+  poms:"collar height, raglan length, tape width, cuff and hem rib height",
+  kw:["track jacket tech pack","canva track jacket tech pack","tracksuit spec sheet","track jacket flat sketch"]},
+ {code:"CPL-001",name:"Capelet",base:"new block",price:[24,24,12,8],
+  why:"Capelet patterns get 8,100 searches against 2,974 listings. Etsy shows capelets up 47% and Pinterest shows cape outfits up 65%.",
+  fabric:"Wool melton or boiled wool, 320 to 400 g/m². Lining 100% viscose.",
+  trims:"Hook and eye or toggle closure, optional tie bow, hanger loop.",
+  focus:"circular hem sweep, collar, lining attachment",
+  poms:"centre back length, neck circumference, hem sweep, collar height",
+  kw:["capelet tech pack","canva capelet tech pack","cape spec sheet","capelet flat sketch"]},
+ {code:"BRL-001",name:"Barrel-leg pant",base:"CRG-001 cargo",price:[24,24,12,8],
+  why:"Barrel-leg trousers are a key FW26-27 menswear silhouette and on the BRAND-013 Tier 2 list.",
+  fabric:"Cotton twill, 280 g/m².",
+  trims:"#4.5 metal fly zip, shank button, front pleat, back welt pockets.",
+  focus:"curved outseam, knee shaping, front pleat depth",
+  poms:"waist, rise, hip, thigh, knee (widest point), leg opening, inseam",
+  kw:["barrel leg pants tech pack","canva barrel pants tech pack","barrel leg trousers spec sheet","barrel leg pants flat sketch"]},
+ {code:"FLD-001",name:"Field jacket",base:"QLJ-001 liner",price:[28,28,12,8],
+  why:"Pinterest shows men's field jacket outfits up 65%. Corduroy, the collar option here, is a key FW26-27 fabric.",
+  fabric:"Cotton canvas or sateen, 260 g/m², in khaki. Corduroy collar option.",
+  trims:"4 bellows pockets with flaps, snaps or buttons, internal waist drawcord, storm flap.",
+  focus:"4-pocket placement, collar and stand, internal drawcord channel",
+  poms:"body length, chest, shoulder, sleeve, collar point length, pocket size and placement",
+  kw:["field jacket tech pack","canva field jacket tech pack","utility jacket spec sheet","field jacket flat sketch"]},
+ {code:"CMP-001",name:"Camp collar shirt",base:"TS-001 tee",price:[24,24,12,8],
+  why:"BRAND-013 Tier 2. Listing it in January gives it time to rank before the spring and summer demand.",
+  fabric:"Viscose or cotton poplin, 120 to 140 g/m².",
+  trims:"6 resin buttons, back box pleat, side vents.",
+  focus:"one-piece camp collar, straight hem with side vents, button spacing",
+  poms:"collar point length, collar width, button spacing, body length, chest, vent height",
+  kw:["camp collar shirt tech pack","canva shirt tech pack","button up shirt spec sheet","camp collar shirt flat sketch"]}
+];
+const B = [
+ {n:"Block 1",t:"Winter peak",w:[1,4],g:"Ship the winter outerwear while searches are at their highest.",bundle:"Winter outerwear bundle: PFJ-001, QLJ-001 and FQZ-001 full packs, USD 65."},
+ {n:"Block 2",t:"Winter tail and bottoms",w:[5,8],g:"Fill the cold-weather accessories and the bottoms that make sets.",bundle:"Sweatsuit set bundle: CSW-001 and SWP-001 full packs, USD 48."},
+ {n:"Block 3",t:"Spring transition",w:[9,12],g:"List the trend and spring pieces early so they rank before March.",bundle:"Update the flat sketch library with all 12 new flats, USD 28 to 35."}
+];
+
+// Daily task template. {x} fills from the garment. prev = last week's garment.
+function tasks(g, w, prev){
+  const sku = s => `${g.code}${s}`;
+  return [
+  {d:0,t:"Spec table",h:4,
+   what:`Lock every number for the ${g.name} in one source table before you draw anything.`,
+   how:[`Save 6 to 10 reference images in /${g.code}/refs and write the fit in one line (boxy, regular, oversized).`,
+        `Duplicate your closest pack, the ${g.base}, as the starting file.`,
+        `Fabric: ${g.fabric}`,
+        `Trims: ${g.trims}`,
+        `Write the POM list. Add these garment-specific points: ${g.poms}. Grade XS to XL.`],
+   done:"One table holds fabric, GSM, trims, POMs and grading, with no blanks."},
+  {d:1,t:"Flats",h:4,
+   what:`Draw the ${g.name} flats from the spec table.`,
+   how:[`Draw front, back and side line flats in Illustrator on the BDL grid, starting from the ${g.base} block.`,
+        `Draw detail zooms for: ${g.focus}.`,
+        "Make the colour flat in 2 colourways: Studio Black and one seasonal colour.",
+        `Export SVG masters to /${g.code}/svg.`],
+   extra: prev ? `Also today (10 min): publish ${prev.code}-F, the ${prev.name} flat sketch pack, at USD ${prev.price[3]}.` : "",
+   done:"Line flats, colour flats, detail zooms and SVG masters are saved."},
+  {d:2,t:"Pages 1 to 6",h:4,
+   what:"Build the first half of the 12-page pack.",
+   how:["Page 1: cover with style code, season and fit line.",
+        "Page 2: flat sketches, line art.",
+        "Page 3: point of measurement diagram with lettered POMs.",
+        "Page 4: graded size chart in cm, XS to XL, with tolerances.",
+        "Page 5: fabric, GSM, composition and colourways.",
+        "Page 6: bill of materials. Pull every number from the spec table. Never type a figure twice."],
+   done:"Pages 1 to 6 are filled, and every figure traces back to the spec table."},
+  {d:3,t:"Pages 7 to 12 and the audit",h:4,
+   what:"Finish the pack, then check it against itself.",
+   how:[`Page 7: construction and seams, covering ${g.focus}.`,
+        "Page 8: stitch spec (type, SPI, thread).",
+        "Page 9: labels and trims placement.",
+        "Page 10: packaging and folding. Page 11: QC and tolerances. Page 12: sampling log.",
+        `Audit all 12 pages: GSM, tolerances and trim sizes must match on every page, and no text can be left over from the ${g.base}.`],
+   extra: prev ? `Also today (10 min): publish ${prev.code}-M, the ${prev.name} mini tech pack, at USD ${prev.price[2]}.` : "",
+   done:"12 pages are done, and the audit finds no conflicts and no leftover text."},
+  {d:4,t:"Mini, flat and Canva editions",h:4,
+   what:"Turn the full pack into the other three products.",
+   how:[`${sku("-M")}: a 2-page mini with the flats, POM diagram and size chart.`,
+        `${sku("-F")}: a 2-page flat sketch pack with the colour flat and the line flat.`,
+        `${sku("-C")}: port all 12 pages to Canva (about 3 hours).`,
+        "Export each as a ZIP with START-HERE_Bundle-Co.pdf inside. The full pack ships AI, SVG and PDF together."],
+   done:"Four ZIPs are ready: full, mini, flat and Canva."},
+  {d:5,t:"Images and listing copy",h:3,
+   what:"Make the photos and words for all four listings in one sitting.",
+   how:["Full pack: 7 images at 2000 x 1500 (hero, what you get, measurements, construction, colourways, formats, four ways to buy).",
+        "Mini, flat and Canva: 5 images each. Each hero must differ: the 12-page spread, the 2-page spread, the flat alone, the Canva editor.",
+        `Titles: the first 40 characters must differ between listings. Lead with: ${g.kw.map(k=>`"${k}"`).join(", ")}.`,
+        "13 tags per listing, with at most 5 shared between any two. Write each description's opening line separately."],
+   extra: prev ? `Also today (10 min): publish ${prev.code}-C, the ${prev.name} Canva edition, at USD ${prev.price[1]}.` : "",
+   done:"4 image sets, 4 titles, 52 tags and 4 descriptions are saved."},
+  {d:6,t:"Publish the full pack",h:2,
+   what:`Put ${g.code} live and start its promotion.`,
+   how:[`Publish ${g.code}, the full tech pack, at USD ${g.price[0]}. Run a launch sale on the full pack only: 25% off for 7 days.`,
+        "Post 2 Pinterest pins linking to the listing, plus 1 Instagram post.",
+        `Next week, publish the other three spaced out: ${sku("-F")} on Saturday, ${sku("-M")} on Monday, ${sku("-C")} on Wednesday.`,
+        "Write this week's numbers in the log: listings live, views, favourites, sales."]
+     .concat(w%4===0 ? [`Block review: ${B[w/4-1].bundle} List it as its own listing.`] : []),
+   done:`${g.code} is live, pins are posted, and the log is updated.`}
+  ];
+}
+const PLAN = G.map((g,i)=>({w:i+1,g,prev:i?G[i-1]:null}));
+const ALL = [];
+PLAN.forEach(p=>tasks(p.g,p.w,p.prev).forEach(t=>{
+  const date = new Date(START.getFullYear(),START.getMonth(),START.getDate()+(p.w-1)*7+t.d);
+  ALL.push({...t,w:p.w,g:p.g,id:`w${p.w}d${t.d}`,n:ALL.length+1,date});
+}));
+const fmt = d => `${DAY[d.getDay()]} ${d.getDate()} ${MON[d.getMonth()]}`;
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY = "bdl-techpack-plan-v1";
+let done = {};
+try{ done = JSON.parse(localStorage.getItem(KEY)||"{}") || {}; }catch(e){ done = {}; }
+const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(done)); }catch(e){} };
+let view="today", focus=null, selWeek=null, selBlock=null;
+const $ = id => document.getElementById(id);
+const next = () => ALL.find(t=>!done[t.id]) || null;
+const blockOf = w => Math.floor((w-1)/4);
+const listingsLive = () => {
+  // full pack goes live on day 6 of its week; F, M and C on days 1, 3 and 5 of the next week
+  let n=0; PLAN.forEach(p=>{ if(done[`w${p.w}d6`]) n++; });
+  ALL.forEach(t=>{ if(t.extra && done[t.id]) n++; });
+  return n;
+};
+function card(t){
+  const isDone=!!done[t.id], nu=next(), now=nu&&nu.id===t.id;
+  return `<section class="card">
+    <div class="row"><span class="code">WEEK ${t.w} · ${esc(t.g.code)} · ${fmt(t.date)} · ABOUT ${t.h} H</span>
+      <span class="pill ${isDone?"ok":now?"now":""}">${isDone?"Done":now?"Up next":"Later"}</span></div>
+    <h2>${esc(t.g.name)}: ${esc(t.t)}</h2>
+    <div><div class="label">What</div><div>${esc(t.what)}</div></div>
+    <div><div class="label">How</div><ol class="steps">${t.how.map(h=>`<li>${esc(h)}</li>`).join("")}</ol></div>
+    ${t.extra?`<div class="extra">${esc(t.extra)}</div>`:""}
+    <div class="donewhen"><div class="label">Done when</div>${esc(t.done)}</div>
+    <div class="btns">
+      ${isDone?`<button class="btn ghost" data-undo="${t.id}">Mark not done</button>`:`<button class="btn" data-done="${t.id}">Mark done</button>`}
+      ${t.n>1?`<button class="btn ghost" data-go="${t.n-1}">Previous</button>`:""}
+      ${t.n<ALL.length?`<button class="btn ghost" data-go="${t.n+1}">Next</button>`:""}
+    </div></section>`;
+}
+function row(t){
+  const on=!!done[t.id], nu=next(), now=nu&&nu.id===t.id;
+  return `<button class="item" data-open="${t.n}"><span class="tick ${on?"on":""}" aria-hidden="true">${on?"✓":""}</span>
+    <span class="t"><b>${esc(t.t)}</b><small>${fmt(t.date)} · ${esc(t.done)}</small></span>
+    <span class="pill ${on?"ok":now?"now":""}">${on?"Done":now?"Next":t.h+" h"}</span></button>`;
+}
+function specGrid(g){
+  return `<div class="spec">
+   <div><div class="label">Why now</div><p>${esc(g.why)}</p></div>
+   <div><div class="label">Fabric</div><p>${esc(g.fabric)}</p></div>
+   <div><div class="label">Trims</div><p>${esc(g.trims)}</p></div>
+   <div><div class="label">Construction focus</div><p>${esc(g.focus)}</p></div>
+  </div>
+  <div class="tbl"><table><thead><tr><th>Listing</th><th>SKU</th><th>Pages</th><th>Price</th><th>Lead keyword</th></tr></thead><tbody>
+   <tr><td>Full tech pack</td><td>${g.code}</td><td class="num">12</td><td class="num">USD ${g.price[0]}</td><td>${esc(g.kw[0])}</td></tr>
+   <tr><td>Canva edition</td><td>${g.code}-C</td><td class="num">12</td><td class="num">USD ${g.price[1]}</td><td>${esc(g.kw[1])}</td></tr>
+   <tr><td>Mini tech pack</td><td>${g.code}-M</td><td class="num">2</td><td class="num">USD ${g.price[2]}</td><td>${esc(g.kw[2])}</td></tr>
+   <tr><td>Flat sketch pack</td><td>${g.code}-F</td><td class="num">2</td><td class="num">USD ${g.price[3]}</td><td>${esc(g.kw[3])}</td></tr>
+  </tbody></table></div>`;
+}
+function render(){
+  const dc=Object.keys(done).filter(k=>done[k]).length;
+  $("bar").style.width=(dc/ALL.length*100)+"%";
+  $("count").textContent=`${dc} / ${ALL.length} tasks`;
+  $("listed").textContent=`${listingsLive()} / 45 listings live by 21 Jan`;
+  document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.v===view)));
+  const nu=next(); let h="";
+  if(view==="today"){
+    const t = focus ? ALL[focus-1] : nu;
+    if(!t){ h=`<section class="card"><h2>All 12 garments done</h2><p class="sub">Publish CMP-001-F on Sat 23 Jan, CMP-001-M on Mon 25 Jan and CMP-001-C on Wed 27 Jan, then plan the next 12 weeks.</p></section>`; }
+    else {
+      const b=B[blockOf(t.w)];
+      h=`<div class="note"><b>Week ${t.w} of 12: ${esc(t.g.name)} (${esc(t.g.code)}).</b> ${esc(b.n)}, ${esc(b.t)}. Missed a day? Do the next task. The order matters more than the date.</div>`+card(t);
+    }
+  } else if(view==="week"){
+    const w = selWeek || (nu?nu.w:12); const p=PLAN[w-1]; const ws=ALL.filter(t=>t.w===w);
+    h=`<div class="stack"><div class="wkhead"><h2>Week ${w}: ${esc(p.g.name)}</h2><span class="code">${esc(p.g.code)} · ${fmt(ws[0].date)} TO ${fmt(ws[6].date)}</span></div>
+      ${specGrid(p.g)}
+      <div class="list">${ws.map(row).join("")}</div>
+      <div class="btns">${w>1?`<button class="btn ghost" data-week="${w-1}">Week ${w-1}</button>`:""}${w<12?`<button class="btn ghost" data-week="${w+1}">Week ${w+1}</button>`:""}</div></div>`;
+  } else if(view==="block"){
+    const bi = selBlock!==null ? selBlock : (nu?blockOf(nu.w):2); const b=B[bi];
+    h=`<div class="stack"><div class="wkhead"><h2>${esc(b.n)}: ${esc(b.t)}</h2><span class="code">WEEKS ${b.w[0]} TO ${b.w[1]}</span></div>
+      <div class="note"><b>Goal:</b> ${esc(b.g)}<br><b>Block review:</b> ${esc(b.bundle)}</div>
+      ${[0,1,2,3].map(k=>{ const w=b.w[0]+k, p=PLAN[w-1], ws=ALL.filter(t=>t.w===w), d=ws.filter(t=>done[t.id]).length;
+        return `<div class="stack"><div class="wkhead"><h3>Week ${w}: ${esc(p.g.name)}</h3><span class="code">${d}/7 · ${fmt(ws[0].date)}</span></div><p class="why">${esc(p.g.why)}</p><div class="list">${ws.map(row).join("")}</div></div>`;}).join("")}
+      <div class="btns">${bi>0?`<button class="btn ghost" data-block="${bi-1}">${esc(B[bi-1].n)}</button>`:""}${bi<2?`<button class="btn ghost" data-block="${bi+1}">${esc(B[bi+1].n)}</button>`:""}</div></div>`;
+  } else if(view==="plan"){
+    h=`<div class="stack"><h2>12 weeks, 3 blocks, 48 listings</h2>
+      <div class="blocks">${B.map((b,i)=>{ const ts=ALL.filter(t=>blockOf(t.w)===i), d=ts.filter(t=>done[t.id]).length;
+        const names=PLAN.slice(b.w[0]-1,b.w[1]).map(p=>p.g.name).join(", ");
+        return `<button class="blk" data-block="${i}"><span class="code">${esc(b.n.toUpperCase())} · WEEKS ${b.w[0]} TO ${b.w[1]} · ${d}/28</span><h3>${esc(b.t)}</h3><p>${esc(names)}</p><div class="mini"><i style="width:${d/28*100}%"></i></div><p>${esc(b.bundle)}</p></button>`;}).join("")}</div>
+      <div class="tbl"><table><thead><tr><th>Wk</th><th>Dates</th><th>Code</th><th>Garment</th><th>Full</th><th>Canva</th><th>Mini</th><th>Flat</th></tr></thead><tbody>
+      ${PLAN.map(p=>{ const a=ALL.find(t=>t.w===p.w&&t.d===0), z=ALL.find(t=>t.w===p.w&&t.d===6);
+        return `<tr><td class="num">${p.w}</td><td class="num">${fmt(a.date)} to ${fmt(z.date)}</td><td>${p.g.code}</td><td><button class="item" style="padding:0;border:0;display:inline;width:auto" data-week="${p.w}"><b>${esc(p.g.name)}</b></button></td><td class="num">${p.g.price[0]}</td><td class="num">${p.g.price[1]}</td><td class="num">${p.g.price[2]}</td><td class="num">${p.g.price[3]}</td></tr>`;}).join("")}
+      </tbody></table></div>
+      <div class="note">Prices in USD. Full and Canva editions ship 12 pages, mini and flat packs ship 2. Floors: full 15, Canva 15, mini 8, flat 5.</div></div>`;
+  } else {
+    h=`<div class="stack"><h2>House rules</h2><div class="list" style="padding:6px 0">
+      ${[
+       ["One source table","Every number lives in the spec table first. Pages pull from it, so the drawing, size chart and BOM never disagree."],
+       ["Audit before export","Check GSM, tolerances and trims on every page, and remove text carried over from the base pack. This is the most common failure."],
+       ["Four distinct listings","Titles differ in the first 40 characters, heroes differ, and any two listings share at most 5 tags. Formats ship together and are never separate listings."],
+       ["Space the launches","Full pack on Thursday. Flat on Saturday, mini on Monday, Canva on Wednesday the week after."],
+       ["One launch sale","25% off the full pack for 7 days. Never put the full pack and the mini on sale at the same time."],
+       ["Time budget","About 25 hours a week for the pack, plus your daily CLO hour. If a day runs over, stop and finish it the next day."],
+       ["Missed a week","Do not double up. Push the plan back one week and keep the order. Winter pieces 1 to 6 matter most before January."]
+      ].map(r=>`<div class="item" style="cursor:default;grid-template-columns:1fr"><span class="t"><b>${esc(r[0])}</b><small style="font-size:13.5px;color:var(--carbon)">${esc(r[1])}</small></span></div>`).join("")}
+    </div></div>`;
+  }
+  $("view").innerHTML=h;
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  if(b.id==="reset"){ if(b.dataset.armed){ done={}; save(); b.textContent="Reset progress"; delete b.dataset.armed; render(); } else { b.dataset.armed="1"; b.textContent="Click again to erase all progress"; } return; }
+  if(b.dataset.v){ view=b.dataset.v; focus=null; selWeek=null; selBlock=null; render(); return; }
+  if(b.dataset.done){ done[b.dataset.done]=true; save(); focus=null; render(); window.scrollTo({top:0,behavior:"smooth"}); return; }
+  if(b.dataset.undo){ delete done[b.dataset.undo]; save(); render(); return; }
+  if(b.dataset.go||b.dataset.open){ focus=+(b.dataset.go||b.dataset.open); view="today"; render(); window.scrollTo({top:0}); return; }
+  if(b.dataset.week){ selWeek=+b.dataset.week; view="week"; render(); return; }
+  if(b.dataset.block!==undefined){ selBlock=+b.dataset.block; view="block"; render(); return; }
+});
+render();
+</script>
+</body>
+</html>
